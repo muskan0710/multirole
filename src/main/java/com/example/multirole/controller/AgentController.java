@@ -1,5 +1,6 @@
 package com.example.multirole.controller;
 
+import com.example.multirole.entity.User;
 import org.hibernate.usertype.UserType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

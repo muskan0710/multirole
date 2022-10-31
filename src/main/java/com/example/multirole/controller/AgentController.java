@@ -1,5 +1,6 @@
 package com.example.multirole.controller;
 
+import com.example.multirole.entity.User;
 import org.hibernate.usertype.UserType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,14 +14,15 @@ public class AgentController {
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public @ResponseBody ResponseEntity<User> createUser(@RequestBody User user) {
+        ResponseBean response = new ResponseBean(null,null);
         try {
             User _user = userDao.save(new User(user.))
             AgentBean agent = agentServices.getAgentDetails(authentication.getName());
             agentId = agent.getAgentId();
-            UserType user = UserType.fromValue(data.get("userType"));
-            adminService.createUser(data.get("olmId"), agent.getCircle().getCircleId(), data.get("storeId"), user,
-                    data.get("name"), data.get("userId"), data.get("msisdn"), data.get("lob"),
-                    data.get("postpaidSfoCode"), data.get("dslSfoCode"), data.get("dslChannelId"), data.get("lapuNumber"), data.get("managerId"));
+            UserType user = UserType.fromValue(user.get("userType"));
+            adminService.createUser(user.get("olmId"), agent.getCircle().getCircleId(), user.get("storeId"), user,
+                    user.get("name"), user.get("userId"), user.get("msisdn"), user.get("lob"),
+                    user.get("postpaidSfoCode"), user.get("dslSfoCode"), user.get("dslChannelId"), user.get("lapuNumber"), user.get("managerId"));
             return new ResponseEntity<>(_user, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

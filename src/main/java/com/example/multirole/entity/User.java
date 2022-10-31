@@ -16,4 +16,33 @@ public class User implements Serializable {
     @Column(name = "username")
     private String username;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_permission",
+            joinColumns = @JoinColumn(name = "userid", referencedColumnName = "userid"),
+            inverseJoinColumns = @JoinColumn(name = "permissionid", referencedColumnName = "permissionid")
+    )
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                '}';
+    }
 }

@@ -29,4 +29,10 @@ public class Role implements Serializable {
     public void setRoleName(String name) {
         this.roleName = name;
     }
+
+    @Override
+    public String toString()
+    {
+        return roleName;
+    }
 }

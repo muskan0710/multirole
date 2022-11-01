@@ -16,12 +16,6 @@ public class User implements Serializable {
     @Column(name = "username")
     private String username;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_permission",
-            joinColumns = @JoinColumn(name = "userid", referencedColumnName = "userid"),
-            inverseJoinColumns = @JoinColumn(name = "permissionid", referencedColumnName = "permissionid")
-    )
 
     public int getId() {
         return id;

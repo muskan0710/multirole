@@ -1,5 +1,7 @@
 package com.example.multirole.config;
 
+import com.example.multirole.repository.UserDao;
+import com.example.multirole.repository.impl.UserDaoImpl;
 import com.example.multirole.service.impl.UserDetailsServiceImpl;
 import org.springframework.context.annotation.*;
 import org.springframework.security.authentication.dao.*;
@@ -16,6 +18,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserDetailsServiceImpl();
+    }
+
+    @Bean
+    public UserDao userDao(){
+        return new UserDaoImpl();
     }
 
     @Bean

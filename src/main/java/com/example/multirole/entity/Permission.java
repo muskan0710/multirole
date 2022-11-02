@@ -9,13 +9,39 @@ public class Permission implements Serializable {
     @Id
     @Column(name = "permissionid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-//
+    private int id;
+
 //    @Column(name = "permission_area")
-//    private int permissionArea;
+//    private int permissionArea;   //roleid
 
     @Column(name = "permission_type")
-    private String permissionType;
+    private int permissionType;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+//    public int getPermissionArea() {
+//        return permissionArea;
+//    }
+//
+//    public void setPermissionArea(int permissionArea) {
+//        this.permissionArea = permissionArea;
+//    }
+
+    public int getPermissionType() {
+        return permissionType;
+    }
+
+    public void setPermissionType(int permissionType) {
+        this.permissionType = permissionType;
+    }
+
+
+
 
 }
 

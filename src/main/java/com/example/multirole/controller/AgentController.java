@@ -19,7 +19,7 @@ import java.util.Map;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping(value = "/cms")
+@RequestMapping(value = "/test")
 public class AgentController {
     @Autowired
     private UserDao userDao;
@@ -43,6 +43,7 @@ public class AgentController {
 //            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 //        }
 //        return response;
+        System.out.println("in create user");
         return userRepository.save(user);
     }
 
@@ -77,7 +78,7 @@ public class AgentController {
         return ResponseEntity.ok(updatedUser);
     }
 
-    @RequestMapping(value = "/getUsers", method = RequestMethod.POST)
+    @RequestMapping(value = "/getUsers", method = RequestMethod.GET)
     public @ResponseBody List<User> getAllUsers() {
 
         return userRepository.findAll();
